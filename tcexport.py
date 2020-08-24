@@ -28,21 +28,23 @@ def process(input_file_name, output_file_name):
     return len(decks)
 
 def main():
-    ap = argparse.ArgumentParser(
-    description ='tcexport version '+ Exporter.VERSION + \
-    ' -- Convert TinyCards decks from a Duolingo "Drive-Thru portal" export file ' \
-    'into a flat CSV file suitable for import into Anki or another flashcard app',
-    epilog='The output CSV file will contain the cards from all TinyCards decks. Each ' \
-    'output CSV record has three fields: front, back, and tag. The name of the TinyCards ' \
-    'deck is converted into a tag, and attached to all cards of that deck.')
-    ap.add_argument("-i", "--infile", required=True, help="input file name (in duolingo CSV format)")
-    ap.add_argument("-o", "--outfile", required=True, help="output file name (CSV export)")
-    args=vars(ap.parse_args())
-
+    # ap = argparse.ArgumentParser(
+    # description ='tcexport version '+ Exporter.VERSION + \
+    # ' -- Convert TinyCards decks from a Duolingo "Drive-Thru portal" export file ' \
+    # 'into a flat CSV file suitable for import into Anki or another flashcard app',
+    # epilog='The output CSV file will contain the cards from all TinyCards decks. Each ' \
+    # 'output CSV record has three fields: front, back, and tag. The name of the TinyCards ' \
+    # 'deck is converted into a tag, and attached to all cards of that deck.')
+    # ap.add_argument("-i", "--infile", required=True, help="input file name (in duolingo CSV format)")
+    # ap.add_argument("-o", "--outfile", required=True, help="output file name (CSV export)")
+    # args=vars(ap.parse_args())
+    infile = '//Users/kenanderson2/Downloads/duolingo/decks.csv'
+    outfile = '//Users/kenanderson2/Documents/cards.csv'
     try:
-        Exporter().verify_input_file(args["infile"])
-        deck_count = process(args["infile"], args["outfile"])
-        print(f'Processed {deck_count} decks from {args["infile"]}.')
+        #Exporter().verify_input_file(args["infile"])
+        #deck_count = process(args["infile"], args["outfile"])
+        deck_count = process(infile,outfile)
+        print(f'Processed {deck_count} decks.')
     except Exception as ex:
         print(ex)
 
